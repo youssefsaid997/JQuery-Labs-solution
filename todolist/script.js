@@ -1,4 +1,3 @@
-var checkedFlag;
 $('form').on('submit', function (e) {
 	e.preventDefault();
 	var inputText = validInputText($('input').val());
@@ -13,15 +12,6 @@ $('form').on('submit', function (e) {
 		// this.parentNode.remove();
 	});
 
-	$("input[type='checkbox']").on('change', function () {
-		checkedFlag = true;
-		if (checkedFlag) {
-			checkedFlag = false;
-		} else {
-			checkedFlag = true;
-		}
-		console.log(checkedFlag);
-	});
 	$('input').val('');
 });
 

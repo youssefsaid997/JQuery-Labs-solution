@@ -16,6 +16,8 @@ $('.btn').each(function (index, button) {
 	//this event will handle the right click to hide the content section
 	$(button).on('contextmenu', function (event) {
 		event.preventDefault();
+		$(this).removeClass('active');
+
 		$('.main').css({ display: 'none' });
 	});
 });
