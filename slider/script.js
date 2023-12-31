@@ -43,6 +43,7 @@ $('.gallery-image img').each(function (index, image) {
 		$('.slider').toggleClass('active');
 
 		$('.next').on('click', function (event) {
+			console.log('aaa');
 			event.stopPropagation();
 			if (counter >= 3) {
 				counter = 0;
