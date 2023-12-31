@@ -1,5 +1,3 @@
-var counter = 0;
-
 // $('img').each(function (index, image) {
 // 	$(image).on('click', function () {
 // 		$('.slider').toggleClass('active');
@@ -36,18 +34,28 @@ var counter = 0;
 // 	});
 // });
 
-$('.gallery-image').each(function (index, image) {
+$('.gallery-image img').each(function (index, image) {
+	var counter = 0;
+	counter = index;
 	$(image).on('click', function () {
-		counter = index;
-		$('.slider').toggleClass('active');
+		console.log(counter, index);
 		$('.slider img').attr({ src: image.src });
+		$('.slider').toggleClass('active');
 
 		$('.next').on('click', function (event) {
-			movingForward(index);
+			if (counter >= 3) {
+				counter = 0;
+			} else {
+				counter++;
+			}
 			$('.active img').attr({ src: $('img')[counter].src });
 		});
 		$('.previous').on('click', function (event) {
-			movingBackward(index);
+			if (counter <= 0) {
+				counter = 3;
+			} else {
+				counter--;
+			}
 			$('.active img').attr({ src: $('img')[counter].src });
 		});
 		$('.exit').click(function () {
@@ -55,18 +63,3 @@ $('.gallery-image').each(function (index, image) {
 		});
 	});
 });
-
-function movingForward(index) {
-	if (counter >= 3) {
-		counter = 0;
-	} else {
-		counter++;
-	}
-}
-function movingBackward(index) {
-	if (counter <= 0) {
-		counter = 3;
-	} else {
-		counter--;
-	}
-}
