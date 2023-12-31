@@ -43,6 +43,7 @@ $('.gallery-image img').each(function (index, image) {
 		$('.slider').toggleClass('active');
 
 		$('.next').on('click', function (event) {
+			event.stopPropagation();
 			if (counter >= 3) {
 				counter = 0;
 			} else {
@@ -51,6 +52,7 @@ $('.gallery-image img').each(function (index, image) {
 			$('.active img').attr({ src: $('img')[counter].src });
 		});
 		$('.previous').on('click', function (event) {
+			event.stopPropagation();
 			if (counter <= 0) {
 				counter = 3;
 			} else {
@@ -59,6 +61,9 @@ $('.gallery-image img').each(function (index, image) {
 			$('.active img').attr({ src: $('img')[counter].src });
 		});
 		$('.exit').click(function () {
+			$('.slider').removeClass('active');
+		});
+		$('.slider').click(function () {
 			$('.slider').removeClass('active');
 		});
 	});
